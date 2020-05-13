@@ -1,20 +1,31 @@
 # list-app
-<!--Belajar membuat aplikasi web di progate menggunakn node.js, paket express dan paket ejs
+<!--Belajar membuat aplikasi web di progate menggunakn node.js, paket express dan paket ejs-->
 
-1. Yang Perlu Kamu Lakukan
-    Komuter yang sudah diinstal Node.js
+<!-- 1. Yang Perlu Kamu Lakukan
+    Komputer yang sudah diinstal Node.js
     Buat folder bernama "list-app" di mana saja di komputer kamu.
+    Lalu buka folder ini di editor
     buka terminal dari path list-app
+    contoh gambar di mac os
+    https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/document/61/1581316824621.png -->
 
-2. Menjalankan Perintah dan Menginstal Paket
-    Pertama, jalankan perintah berikut:
+<!-- 2. Menjalankan Perintah dan Menginstal Paket
+    Pertama, jalankan perintah berikut: -->
     npm init --yes
-    Ini adalah perintah yang digunakan untuk membuat package.json, yang merupakan file konfigurasi npm. Informasi pengaturan paket npm dijabarkan didalam file package.json.
-    Kemudian instal paket npm. Dalam artikel ini kita akan menginstal express dan ejs. Untuk melakukannya, jalankan perintah berikut:
-    npm install express ejs
-    *Kamu bisa menjalankan setiap perintah npm install express dan npm install ejs, secara terpisah. Tapi dengan menulis npm intall Package1 Package2..., kamu akan bisa menginstal beberapa paket dengan satu perintah.
 
-    Mari Mulai dari Server dan Halaman Tampilan.
+<!-- Ini adalah perintah yang digunakan untuk membuat package.json, yang merupakan file konfigurasi npm. Informasi pengaturan paket npm dijabarkan didalam file package.json. -->
+
+<!-- Kemudian instal paket npm. Dalam artikel ini kita akan menginstal express dan ejs. Untuk melakukannya, jalankan perintah berikut: -->
+    npm install express ejs
+
+<!-- Jika kamu melihat gambar seperti di bawah ini, artinya instalasi sudah selesai. 
+https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/document/61/1581316879898.png -->
+
+<!-- *Kamu bisa menjalankan setiap perintah npm install express dan npm install ejs, secara terpisah. Tapi dengan menulis npm intall Package1 Package2..., kamu akan bisa menginstal beberapa paket dengan satu perintah. -->
+
+# Mulai dari Server dan Halaman Tampilan.
+<!-- Pertama, siapkan file yang dibutuhkan. Buat file dan folder yang mengelilingi batas hijau, seperti gambar di bawah. Jika kamu berhasil mengikuti langkah sampai di sini, file lainnya akan dibuat.
+https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/document/56/1578463105462.png
     a. buat folder yang dibutuhkan: folder views,(folder public(menyimpan css dan gambar)).
     b. buat file yang dibutuhkan: file app.js, (file hello.ejs => (berada didalam folder views)).
     c. Salin code di bawah ini dan tempelkan ke setiap file.-->
@@ -45,33 +56,44 @@ Ctrl + C
 <!--lalu restart server dengan:-->
 node app.js
 
-<!--
-3. Membuat agar Server Restart Otomatis setelah Meng-update File
-    Kita sudah berhasil menampilkan halaman, tapi setiap ada perubahan di situ, kita harus me-restart server untuk menerapkannya.
-    Agar tidak me-restart server secara manual, mari instal nodemon, suatu paket npm yang dapat me-restart server secara otomatis saat ada perubahan dalam file.-->
+
+# Membuat agar Server Restart Otomatis setelah Meng-update File
+<!-- Kita sudah berhasil menampilkan halaman, tapi setiap ada perubahan di situ, kita harus me-restart server untuk menerapkannya.
+Agar tidak me-restart server secara manual, mari instal nodemon, suatu paket npm yang dapat me-restart server secara otomatis saat ada perubahan dalam file. -->
 npm install nodemon
+
+<!-- jika berhasil akan tampil seperti ini
+https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/document/61/1581317006457.png -->
 
 <!--Berikutnya, mari kita coba memulai server menggunakan nodemon. Untuk menjalankan nodemon, jalankan perintah berikut. (Kamu bisa salin lalu tempelkan perintah ini dengan Ctrl + V atau Ctrl + Shift + V).
 Windows-->
 .\\node_modules\\.bin\\nodemon app.js
 
-<!--Jika layar [nodemon] starting node app.js ditampilkan, artinya kamu berhasil memulai server menggunakan nodemon.
+<!-- Jika layar berikut ditampilkan, artinya kamu berhasil memulai server menggunakan nodemon.
+https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/document/61/1581317022431.png -->
 
-Ada Cara Mempermudah Proses Memulai nodemon
-Menulis .\\node_modules\\.bin\\nodemon app.js setiap kali ingin menjalankan server terkesan agak repot. Mari kita pelajari cara agar proses ini jadi lebih mudah.
-Buka file package.json di dalam "list-app." Kamu akan menemukan kolom bernama scripts di dalam file package.json.
 
-Kamu bisa mendaftarkan perintah yang sering digunakan sebagai tugas di dalam scripts, dan kamu dapat membukanya dengan mudah.
+<!-- Ada Cara Mempermudah Proses Memulai nodemon
+Menulis .\\node_modules\\.bin\\nodemon app.js setiap kali ingin menjalankan server terkesan agak repot. Mari kita pelajari cara agar proses ini jadi lebih mudah. -->
+
+<!-- Buka file package.json di dalam "list-app." Kamu akan menemukan kolom bernama scripts di dalam file package.json.
+https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/document/56/1578462759416.png -->
+
+<!-- Kamu bisa mendaftarkan perintah yang sering digunakan sebagai tugas di dalam scripts, dan kamu dapat membukanya dengan mudah.
 Mari coba mendaftarkan tugas.
 Di sini kita akan menghapus tugas bernama test yang sudah ditulis dalam scripts, dan sebagai gantinya kita akan mendaftarkan tugas bernama start. Hapus baris `"test": 〜 dan masukkan perintah berikut.
-Windows-->
+Windows -->
+
  "start": ".\\node_modules\\.bin\\nodemon app.js"
+
+ <!-- https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/document/56/157846276175.png -->
 
 <!-- Mari jalankan tugas start yang baru kita daftarkan.
 Syntax yang digunakan untuk ini adalah npm run taskname.
 Jalankan perintah berikut dan periksa apakah kamu bisa memulai server menggunakan nodemon.-->
 npm run start
 
+<!-- https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/document/61/1581317086638.png -->
 <!--Sekarang kamu bisa memulai server dengan cepat!-->
 
 # Persiapan Local Environment MySQL(Windows)
@@ -98,12 +120,19 @@ langkah-langkah instal:
 
 # 3. Memeriksa Variable Environment
 <!--Pada kotak pencarian di kiri bawah, ketik "environment variable." Ketika Edit the system environment variables ditampilkan, klik untuk membukanya.
+https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/document/66/1582877617781.png
 klik Path lalu Edit.
-Di jendela baru yang membuka, kita akan mengubah area yang disorot pada gambar di bawah ini menjadi MySQL Server 5.7. Jika MySQL Server 5.7 sudah muncul, pindah ke bagian berikutnya, Uji Operasional MySQL.
+Di jendela baru yang membuka, kita akan mengubah area yang disorot pada gambar di bawah ini menjadi MySQL Server 5.7.
+https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/document/66/1582877758879.png
+ 
+Jika MySQL Server 5.7 sudah muncul, pindah ke bagian berikutnya, Uji Operasional MySQL.
+https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/document/79/158554403810.png
+
 Jalankan perintah berikut di Command Prompt untuk memeriksa bahwa environment variable sudah berubah.-->
 mysql --version
 
-<!--Jika versi seperti berikut ditampilkan mysql Ver 14.14 Distrib 5.7.28 for Win64 (x86_64), artinya langkah ini sudah selesai.-->
+<!--Jika versi seperti berikut ditampilkan mysql Ver 14.14 Distrib 5.7.28 for Win64 (x86_64), artinya langkah ini sudah selesai.
+https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/document/66/1582608867914.png-->
 
 # 4. Uji Operasional MySQL
 <!--*Jika perintah ditolak dan tidak dapat dijalankan, ada kemungkinan kamu belum menjalankan Command Prompt sebagai administrator. Coba tutup aplikasi tersebut dan buka aplikasi lagi sebagai administrator.
@@ -114,7 +143,9 @@ Setelah berhasil memulai MySQL, jalankan perintah berikut dan masuk sebagai root
 *Seorang root user adalah pengguna Administrator yang memiliki akses ke semua perintah dan file.-->
 mysql --user=root --password
 
-<!--Setelah menjalankan perintah, Enter password: akan ditampilkan, jadi ketikkan kata sandi baru yang kamu gunakan sebelumnya lalu klik "Enter."-->
+<!--Setelah menjalankan perintah, Enter password: akan ditampilkan, jadi ketikkan kata sandi baru yang kamu gunakan sebelumnya lalu klik "Enter."
+Jika berhasil masuk, kamu akan melihat layar seperti di bawah ini.
+https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/document/66/1582608950112.png-->
 
 <!--Keluar
 Ayo kita coba keluar dari MySQL.-->
@@ -132,6 +163,8 @@ net stop mysql57
 <!-- Menginstal Paket mysql
 Pertama, instal Paket mysql. -->
 npm install mysql
+
+<!-- https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/document/64/1581318324681.png -->
 
 # Membuat Database dan Tabel
 <!-- Pilih data dan nama kolom pilihanmu sendiri. Untuk informasi tentang cara membuat database, baca artikel Membuat Database dengan MySQL.
