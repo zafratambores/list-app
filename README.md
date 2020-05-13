@@ -124,4 +124,76 @@ Menghentikan MySQL
 Terakhir, kita coba hentikan MySQL dengan menjalankan perintah berikut.-->
 net stop mysql57
 
-<!--The MySQL57 service was stopped successfully. akan ditampilkan jika kamu berhasil menghentikan MySQL.-->
+<!--The MySQL57 service was stopped successfully. akan ditampilkan jika kamu berhasil menghentikan MySQL.ika semua langkah berhasil diselesaikan, artinya environment MySQL sudah bekerja dan bisa langsung digunakan!-->
+
+# Menghubungkan Aplikasi Node.js ke MySQL
+<!-- Menyiapkan Aplikasi Dasar -->
+<!-- Jika tidak memiliki aplikasi yang akan dihubungkan, buat aplikasi sederhana dengan mengikuti artikel Membuat Aplikasi Node.js Baru. -->
+<!-- Menginstal Paket mysql
+Pertama, instal Paket mysql. -->
+npm install mysql
+
+# Membuat Database dan Tabel
+<!-- Pilih data dan nama kolom pilihanmu sendiri. Untuk informasi tentang cara membuat database, baca artikel Membuat Database dengan MySQL.
+Nama Database: list_app
+Nama Tabel: users -->
+
+# Memasuki Pengaturan mysql
+<!-- Dalam app.js, kita akan mengimpor paket mysql dan menghubungkan ke MySQL dengan memasukkan informasi yang diperlukan seperti di bawah ini. Untuk passwordnya, gunakan password yang sama saat proses instalasi. -->
+
+<!-- app.js -->
+const express = require('express');
+const mysql = require('mysql');
+
+const app = express();
+
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: '[Password yang kamu gunakan sebelumnya]',
+  database: 'list_app'
+});
+
+<!-- Selanjutnya, atur agar pesan kesalahan muncul saat tidak dapat terhubung ke MySQL. -->
+<!-- app.js -->
+connection.connect((err) => {
+  if (err) {
+    console.log('error connecting: ' + err.stack);
+    return;
+  }
+  console.log('success');
+});
+
+<!-- Sekarang, tulis code yang membuat kita bisa mendapatkan dan menampilkan informasi dari MySQL. Dalam contoh ini, kita akan membuat detail database ditampilkan menggunakan console.log saat mengakses localhost:3000/. -->
+<!-- app.js -->
+app.get('/', (req, res) => {
+  connection.query(
+    'SELECT * FROM items',
+    (error, results) => {
+      console.log(results);
+      res.render('hello.ejs');
+    }
+  );
+});
+
+app.listen(3000);
+
+<!-- Jika app.js terlihat seperti gambar berikut, langkah ini sudah selesai.
+https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/document/80/1585502653997.png -->
+
+<!-- Terakhir, buat file tampilan yang akan ditampilkan dalam views/hello.ejs saat mengakses localhost:3000/. -->
+<!-- views/hello.ejs -->
+<h1>Hello World</h1>
+
+<!-- Jika app.js sudah tersimpan, nyalakan server dengan menjalankan nodemon app.js, dan mengakses localhost:3000/.
+Jika tampilan data di Terminal sudah sesuai dengan gambar di bawah ini, kamu sudah berhasil menyelesaikan langkah ini!
+https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/document/64/1581318369204.png -->
+
+<!-- Mari kita uji untuk melihat apakah pesan kesalahan muncul ketika kita tidak dapat terhubung ke database. Coba ubah nama database seperti di bawah ini.
+https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/document/64/1581318386541.png -->
+
+<!-- Jika pesan kesalahan muncul seperti gambar di bawah, code untuk menentukan apakah aplikasi terhubung ke database sudah berfungsi dengan baik.
+https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/document/64/1581318396467.png -->
+
+<!-- Jangan lupa untuk mengubah informasi kembali ke aslinya. -->
+
